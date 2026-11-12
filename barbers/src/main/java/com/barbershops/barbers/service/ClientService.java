@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.barbershops.barbers.entity.Client;
+import com.barbershops.barbers.entity.Shop;
 import com.barbershops.barbers.repository.ClientRepository;
 
 @Service
@@ -50,6 +51,10 @@ public class ClientService {
             return true;
         }
         return false;
+    }
+
+    public Client createClient(String name, String phoneNum, Shop shop) {
+        return clientRepository.save(new Client(name, phoneNum, shop));
     }
 
 }

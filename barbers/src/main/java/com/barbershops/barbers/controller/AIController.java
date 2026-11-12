@@ -17,8 +17,8 @@ public class AIController {
     }
 
     @PostMapping
-    public String chat(@RequestBody String message) {
-        return aiService.chat(message);
+    public Object chat(@RequestBody String phone, @RequestBody String message) {
+        return aiService.chat(phone, message);
     }
 
 }

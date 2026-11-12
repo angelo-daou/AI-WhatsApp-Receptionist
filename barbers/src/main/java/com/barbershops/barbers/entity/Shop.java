@@ -3,6 +3,8 @@ package com.barbershops.barbers.entity;
 import java.util.List;
 import java.util.Vector;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class Shop {
     private String name;
 
     @OneToMany(mappedBy = "shop")
+    @JsonIgnore 
     private List<Barber> barbers = new Vector<>();
 
     public Shop() { // default constructor for the JPA (it will instantiate the entity from the

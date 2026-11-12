@@ -33,6 +33,16 @@ public class Booking {
     public Booking() {
     }
 
+    public Booking(Shop shop, Barber barber, Services service, Client client, LocalDateTime startTime,
+            LocalDateTime endTime) {
+        this.shop = shop;
+        this.barber = barber;
+        this.service = service;
+        this.client = client;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public Integer getBookingId() {
         return bookingId;
     }

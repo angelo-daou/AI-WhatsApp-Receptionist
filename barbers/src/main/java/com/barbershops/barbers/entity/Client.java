@@ -22,6 +22,12 @@ public class Client {
     public Client() {
     }
 
+    public Client(String name, String phoneNum, Shop shop) {
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.shop = shop;
+    }
+
     public Integer getClientId() {
         return clientId;
     }
