@@ -75,11 +75,18 @@ public class BookingService {
                 return null;
             }
 
+            if (!newBooking.getStartTime().isBefore(newBooking.getEndTime())) {
+                return null;
+            }
+
             List<Booking> bookings = bookingRepository.findAll();
             for (int i = 0; i < bookings.size(); i++) {
+                if (bookings.get(i).getBookingId().equals(id)) {
+                    continue; // skip the booking being updated
+                }
                 if (bookings.get(i).getBarber().getBarberId().equals(barber.getBarberId())) {
-                    if (bookings.get(i).getStartTime().isBefore(booking.getEndTime())
-                            && bookings.get(i).getEndTime().isAfter(booking.getStartTime())) { // if overlap
+                    if (bookings.get(i).getStartTime().isBefore(newBooking.getEndTime())
+                            && bookings.get(i).getEndTime().isAfter(newBooking.getStartTime())) { // if overlap
                         return null;
                     } // oldst < newEt && oldEt > newSt, if true then overlap
                 } // checking overlap
